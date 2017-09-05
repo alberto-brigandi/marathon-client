@@ -9,6 +9,33 @@ public class App {
 	public App() {
 	}
 
+	public enum Embed {
+
+		TASKS("app.tasks"),
+		COUNTS("app.counts"),
+		DEPLOYMENTS("app.deployments"),
+		READINESS("app.readiness"),
+		LAST_TASK_FAILURE("app.lastTaskFailure"),
+		@Deprecated
+		FAILURES("app.failures"),
+		TASK_STATS("app.taskStats");
+
+		private final String value;
+
+		Embed(String value) {
+			this.value = value;
+		}
+
+		public String getVaule() {
+			return this.value;
+		}
+
+		@Override
+		public String toString() {
+			return getVaule();
+		}
+	}
+
 	public static class Deployment {
 		private String id;
 

@@ -17,7 +17,34 @@ public class Group {
 	public Group(String id) {
 		this.id = id;
 	}
-	
+
+	public enum Embed {
+
+		GROUPS("group.groups"),
+		APPS("group.apps"),
+		APPS_TASKS("group.apps.tasks"),
+		APPS_COUNTS("group.apps.counts"),
+		APPS_DEPLOYMENTS("group.apps.deployments"),
+		APPS_READINESS("group.apps.readiness"),
+		APPS_LAST_TASK_FAILURE("group.apps.lastTaskFailure"),
+		APPS_TASK_STATS("group.apps.taskStats");
+
+		private final String value;
+
+		Embed(String value) {
+			this.value = value;
+		}
+
+		public String getVaule() {
+			return this.value;
+		}
+
+		@Override
+		public String toString() {
+			return getVaule();
+		}
+	}
+
 	public String getId() {
 		return id;
 	}

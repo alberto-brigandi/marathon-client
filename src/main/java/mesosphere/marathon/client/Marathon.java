@@ -36,6 +36,11 @@ public interface Marathon {
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	GetAppsResponse getApps(@QueryMap Map<String, String> queryMap) throws MarathonException;
 
+	@RequestLine("GET /v2/apps/{id}?embed={embed}")
+	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
+	GetAppResponse getApp(@Param("id") String id, @Param("embed") List<App.Embed> embedParams)
+			throws MarathonException;
+
 	@RequestLine("GET /v2/apps/{id}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	GetAppResponse getApp(@Param("id") String id) throws MarathonException;
@@ -91,6 +96,10 @@ public interface Marathon {
 	@RequestLine("DELETE /v2/groups/{id}?force={force}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	Result deleteGroup(@Param("id") String id, @Param("force") boolean force) throws MarathonException;
+
+	@RequestLine("GET /v2/groups/{id}?embed={embed}")
+	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
+	Group getGroup(@Param("id") String id, @Param("embed") List<Group.Embed> queryMap) throws MarathonException;
 
 	@RequestLine("GET /v2/groups/{id}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
